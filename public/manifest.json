@@ -1,0 +1,18 @@
+{
+  "short_name": "WheelofPersia",
+  "name": "Wheel of Persia",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "fullscreen",
+
+  "orientation": "portrait",
+  "description": "Wheel of Persia, a free and non-gambling game where you pick numbers on a wheel.",
+  "theme_color": "#000000",
+  "background_color": "#eeeeee"
+}
