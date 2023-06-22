@@ -36,17 +36,15 @@ function BetsWheel(prop) {
 
   return (
     <>
-      <div className="infobtn">
-        <Link to={"/"} style={{ textDecoration: "none" }}>
-          <Icon
-            name="arrow alternate circle left outline"
-            color="grey"
-            circular
-            inverted
-          />
-        </Link>
-      </div>
-      <div className="info" style={{ marginLeft: 40 }}>
+      <div className="info">
+        <img
+          src={
+            "https://khodekhalse.com/assets/images/stars/lvl" +
+            user?.image +
+            ".webp"
+          }
+          style={{ height: 30 }}
+        />
         <b>{user?.username}</b>
         <div style={{ float: "right" }}>
           <span>{online}</span>{" "}

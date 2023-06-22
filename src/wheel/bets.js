@@ -43,57 +43,57 @@ const haveBet = (pos, list, user) => {
 };
 const getChipsCount = (item, user) => {
   var bet = item.bet;
-  var count500 = bet / 50000;
+  var count500 = bet / 5000;
   var bets = [];
   count500 = parseInt(count500);
 
   for (let i = 0; i < count500; i++) {
-    bets.push(50000);
+    bets.push(5000);
   }
-  bet = bet - count500 * 50000;
+  bet = bet - count500 * 5000;
 
-  var count250 = bet / 25000;
+  var count250 = bet / 1000;
 
   count250 = parseInt(count250);
 
   for (let i = 0; i < count250; i++) {
-    bets.push(25000);
+    bets.push(1000);
   }
-  bet = bet - count250 * 25000;
+  bet = bet - count250 * 1000;
 
-  var count50 = bet / 5000;
+  var count50 = bet / 500;
 
   count50 = parseInt(count50);
 
   for (let i = 0; i < count50; i++) {
-    bets.push(5000);
-  }
-  bet = bet - count50 * 5000;
-
-  var count25 = bet / 1000;
-  count25 = parseInt(count25);
-  for (let i = 0; i < count25; i++) {
-    bets.push(1000);
-  }
-  bet = bet - count25 * 1000;
-  var count10 = bet / 500;
-  count10 = parseInt(count10);
-  for (let i = 0; i < count10; i++) {
     bets.push(500);
   }
+  bet = bet - count50 * 500;
 
-  bet = bet - count10 * 500;
-  var count5 = bet / 250;
-  count5 = parseInt(count5);
-  for (let i = 0; i < count5; i++) {
-    bets.push(250);
+  var count25 = bet / 100;
+  count25 = parseInt(count25);
+  for (let i = 0; i < count25; i++) {
+    bets.push(100);
+  }
+  bet = bet - count25 * 100;
+  var count10 = bet / 25;
+  count10 = parseInt(count10);
+  for (let i = 0; i < count10; i++) {
+    bets.push(25);
   }
 
-  bet = bet - count5 * 250;
-  var count1 = bet / 50;
+  bet = bet - count10 * 25;
+  var count5 = bet / 5;
+  count5 = parseInt(count5);
+  for (let i = 0; i < count5; i++) {
+    bets.push(5);
+  }
+
+  bet = bet - count5 * 5;
+  var count1 = bet / 1;
   count1 = parseInt(count1);
   for (let i = 0; i < count1; i++) {
-    bets.push(50);
+    bets.push(1);
   }
 
   return bets.map((chip, i) => {

@@ -20,7 +20,7 @@ const BoardUser = () => {
       setUserDC(true);
     });
     EventBus.on("connect", (data) => {
-      setUserDC(false);
+      //setUserDC(false);
     });
     return () => {
       EventBus.remove("disconnect");

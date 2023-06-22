@@ -26,7 +26,7 @@ body {
 }
 div.home {
   height: 100vh;
-  background: #000 url("assets/bgn.jpg");
+  background: #000 url("bgn.jpg");
   background-size: cover;
   overflow-x: hidden;
 }
@@ -992,7 +992,7 @@ canvas {
     );
 }
 .pokerchip.white:after {
-  content: "50";
+  content: "1";
   background: #89817f;
   color: #fff;
 }
@@ -1083,7 +1083,7 @@ canvas {
     );
 }
 .pokerchip.red:after {
-  content: "250";
+  content: "5";
   background: #fe7f9c;
   color: #ffffff;
 }
@@ -1174,7 +1174,7 @@ canvas {
     );
 }
 .pokerchip.blue:after {
-  content: "500";
+  content: "25";
   background: #0492c2;
   color: #ffffff;
 }
@@ -1265,7 +1265,7 @@ canvas {
     );
 }
 .pokerchip.green:after {
-  content: "5K";
+  content: "500";
   background: #04bd49;
   color: #ffffff;
 }
@@ -1356,7 +1356,7 @@ canvas {
     );
 }
 .pokerchip.black:after {
-  content: "1K";
+  content: "100";
   background: #ffef00;
   color: #515151;
 }
@@ -1447,7 +1447,7 @@ canvas {
     );
 }
 .pokerchip.bnfsh:after {
-  content: "25K";
+  content: "1K";
   background: #710080;
   color: #ffffff;
 }
@@ -1538,7 +1538,7 @@ canvas {
     );
 }
 .pokerchip.golds:after {
-  content: "50K";
+  content: "5K";
   background: #d2b10a;
   color: #ffffff;
 }

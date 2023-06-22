@@ -41,15 +41,19 @@ const getDelts = (item, betx, tit, num) => {
           fontSize: 16,
         }}
       >
+        <small>{item?.username}</small>
         <br /> <b>{tit}</b> <br />
         {formatDollar(item?.bet * betx)}
         <Jetton style={{ width: 20, height: 20, display: "inline" }} />
         <br />
-        <small>{item?.username}</small>
       </span>
       <Image
         circular
-        src={item?.image}
+        src={
+          "https://khodekhalse.com/assets/images/stars/lvl" +
+          item?.image +
+          ".webp"
+        }
         centered
         style={{
           width: "15vw",

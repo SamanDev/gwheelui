@@ -20,16 +20,12 @@ const GridExampleDividedPhrase = (prop) => {
           <Grid.Column style={{ padding: 0 }}>
             <BetsWheel bet={bet} setBet={setBet} />
           </Grid.Column>
-          <Grid.Column style={{ padding: 0 }}>
-            <ChatWheel />
-          </Grid.Column>
+          <Grid.Column style={{ padding: 0 }}></Grid.Column>
           <Grid.Column style={{ padding: 0 }}>
             <ChipsWheel bet={bet} setBet={setBet} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
-      <SendChatWheel />
     </>
   );
 };

@@ -127,7 +127,6 @@ function CountWheel(prop) {
     <>
       {15 - time > 0 && time < 15 && (
         <>
-          <ModalAds open={openads} setOpen={setOpenads} />
           <div className="count" style={{ zIndex: 11, marginTop: -70 }}>
             <h2 className="text-shadows">{15 - time}</h2>
           </div>

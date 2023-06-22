@@ -60,20 +60,20 @@ function BetsWheel(prop) {
       className="chipps"
     >
       <div className="chiparea">
-        <div style={user?.balance2 >= 50 ? {} : { opacity: 0.5 }}>
-          <GetChip chip={50} {...prop} />
+        <div style={user?.balance2 >= 1 ? {} : { opacity: 0.5 }}>
+          <GetChip chip={1} {...prop} />
         </div>
-        <div style={user?.balance2 >= 250 ? {} : { opacity: 0.5 }}>
-          <GetChip chip={250} {...prop} />
+        <div style={user?.balance2 >= 5 ? {} : { opacity: 0.5 }}>
+          <GetChip chip={5} {...prop} />
+        </div>
+        <div style={user?.balance2 >= 25 ? {} : { opacity: 0.5 }}>
+          <GetChip chip={25} {...prop} />
+        </div>
+        <div style={user?.balance2 >= 100 ? {} : { opacity: 0.5 }}>
+          <GetChip chip={100} {...prop} />
         </div>
         <div style={user?.balance2 >= 500 ? {} : { opacity: 0.5 }}>
           <GetChip chip={500} {...prop} />
-        </div>
-        <div style={user?.balance2 >= 1000 ? {} : { opacity: 0.5 }}>
-          <GetChip chip={1000} {...prop} />
-        </div>
-        <div style={user?.balance2 >= 5000 ? {} : { opacity: 0.5 }}>
-          <GetChip chip={5000} {...prop} />
         </div>
       </div>
     </div>
