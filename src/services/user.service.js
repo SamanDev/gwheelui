@@ -3,8 +3,8 @@ import authHeader from "./auth-header";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.wheelofpersia.com/"
-    : "http://api.wheelofpersia.com/";
+    ? "https://api.khodekhalse.com/"
+    : "http://api.khodekhalse.com/";
 const getPublicContent = () => {
   return axios.get(API_URL + "api/all");
 };
