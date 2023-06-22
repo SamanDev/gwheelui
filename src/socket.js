@@ -1,14 +1,21 @@
 import { io } from "socket.io-client";
 import EventBus from "./common/EventBus";
 // "undefined" means the URL will be computed from the `window.location` object
+
 const URL =
   process.env.NODE_ENV === "production"
-    ? "https://sock.wheelofpersia.com/wheel"
-    : "http://sock.wheelofpersia.com/wheel";
+    ? "https://wserver.khodekhalse.com/wheel"
+    : "https://wserver.khodekhalse.com/wheel";
+const url = window.location.href.toString().split("/");
 
-const socket = io(URL, {
+export const socket = io(URL, {
+  auth: {
+    username: url[url.length - 1],
+    token: url[url.length - 2],
+  },
   autoConnect: false,
 });
+
 function onConnect() {
   EventBus.dispatch("connect", true);
   socket.on("msg", ({ command, data }) => {

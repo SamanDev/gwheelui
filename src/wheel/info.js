@@ -3,9 +3,7 @@ import EventBus from "../common/EventBus";
 import { Icon } from "semantic-ui-react";
 import { Jetton, UsersIcon, formatDollar } from "../utils/include";
 import { Link } from "react-router-dom";
-import Mod from "./modalinv";
-import Modads from "./modalads";
-import ModLeader from "./modalleader";
+
 function BetsWheel(prop) {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
@@ -30,8 +28,10 @@ function BetsWheel(prop) {
   }, []);
   useEffect(() => {
     var newuser = oldduser;
-    newuser.balance2 = balance;
-    localStorage.setItem("user", JSON.stringify(newuser));
+    try {
+      newuser.balance2 = balance;
+      localStorage.setItem("user", JSON.stringify(newuser));
+    } catch (error) {}
   }, [balance]);
 
   return (
@@ -45,12 +45,6 @@ function BetsWheel(prop) {
             inverted
           />
         </Link>
-        <br />
-        <Mod />
-        <br />
-        <Modads />
-        <br />
-        <ModLeader />
       </div>
       <div className="info" style={{ marginLeft: 40 }}>
         <b>{user?.username}</b>

@@ -6,18 +6,9 @@ import { Segment, Dimmer, Icon, Header, Button } from "semantic-ui-react";
 import EventBus from "../common/EventBus";
 import socket from "../socket";
 const BoardUser = () => {
-  const user = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : null;
-
   const [userDC, setUserDC] = useState(false);
   useEffect(() => {
-    if (!user?.accessToken) {
-      window.location.href = "/";
-    } else {
-      socket.auth = user;
-      socket.connect();
-    }
+    socket.connect();
 
     return () => {
       //setUserDC(true);
@@ -35,7 +26,7 @@ const BoardUser = () => {
       EventBus.remove("disconnect");
     };
   }, []);
-  if (userDC || !user?.accessToken) {
+  if (userDC) {
     return (
       <Dimmer active className="loadarea" style={{ paddingTop: "10%" }}>
         <Header as="h2" icon inverted>
@@ -45,7 +36,7 @@ const BoardUser = () => {
         <br />
         <Button
           onClick={() => {
-            window.location.reload();
+            //window.location.reload();
           }}
           color="orange"
         >
