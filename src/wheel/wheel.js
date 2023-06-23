@@ -39,6 +39,8 @@ function MNyWheel(prop) {
     };
   }, []);
   useEffect(() => {
+    $(".bhdLno img").remove();
+
     if (wheel?.status) {
       if (wheel?.status == "Spin") {
         var t1 = new Date(wheel?.date);

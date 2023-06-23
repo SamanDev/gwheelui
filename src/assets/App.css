@@ -354,7 +354,7 @@ tr .ui,
 .bhdLno > div {
   overflow: hidden;
   border-radius: 1000px;
-  transition: border 1s ease !important;
+  transition: border-color 1s ease !important;
 
   margin: auto;
 }
