@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Mywhell from "../MyWheel";
 
-import { Segment, Dimmer, Icon, Header, Button } from "semantic-ui-react";
+import { Dimmer, Icon, Header, Button } from "semantic-ui-react";
 import EventBus from "../common/EventBus";
 import socket from "../socket";
 const BoardUser = () => {
@@ -22,6 +22,7 @@ const BoardUser = () => {
     EventBus.on("connect", (data) => {
       //setUserDC(false);
     });
+
     return () => {
       EventBus.remove("disconnect");
     };
@@ -47,9 +48,7 @@ const BoardUser = () => {
   }
   return (
     <div className="home wheel">
-      <div className="cadr">
-        <Mywhell />
-      </div>
+      <Mywhell />
     </div>
   );
 };

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import { segments, getcolor } from "../utils/include";
 import EventBus from "../common/EventBus";
-import ModalAds from "../modalvideofast";
 var timer;
 
 function checkbox() {
@@ -37,7 +36,7 @@ const updateWheelborder = (wheel) => {
   }
 };
 function CountWheel(prop) {
-  const [time, setTime] = useState(1);
+  const [time, setTime] = useState(0);
 
   const [openads, setOpenads] = useState(false);
   const [wheel, setWheel] = useState(prop.wheel);
@@ -45,7 +44,11 @@ function CountWheel(prop) {
   useEffect(() => {
     EventBus.on("wheel", (data) => {
       if (data?.status) {
+        clearInterval(lighter);
+
         setWheel(data);
+
+        updateWheelborder(data);
       }
     });
 
@@ -59,46 +62,25 @@ function CountWheel(prop) {
   }, []);
 
   useEffect(() => {
+    clearInterval(lighter);
     if (wheel?.status == "Pending") {
-      if (wheel?.startNum == 0) {
-        setOpenads(true);
-      }
-
-      clearInterval(lighter);
+      setTime(0);
+      clearTimeout(timer);
+      mytime();
+      updateWheelborder(wheel);
       lighter = setInterval(() => {
         checkbox();
-      }, 2500);
-      $(".mainwheel").removeClass("mytrue");
-      $(".ws").html("");
-      mytime();
-      updateWheelborder(wheel);
+      }, 1900);
     } else {
-      mytime();
+      setTime(0);
+      clearTimeout(timer);
       updateWheelborder(wheel);
+      mytime();
+      lighter = setInterval(() => {
+        checkbox();
+      }, 800);
     }
   }, [wheel?.status]);
-  useEffect(() => {
-    clearTimeout(timer);
-    if (time >= 15) {
-      if ($(".ws").html() == "") {
-        if (wheel?.status != "Done") {
-          clearInterval(lighter);
-          lighter = setInterval(() => {
-            checkbox();
-          }, 500);
-        }
-
-        $(".mainwheel").addClass("mytrue");
-        $(".ws").html("hi");
-      }
-    }
-
-    if (time <= 59) {
-      timer = setTimeout(() => {
-        mytime();
-      }, 1000);
-    }
-  }, [time]);
 
   const mytime = () => {
     if (wheel?.status) {
@@ -108,8 +90,14 @@ function CountWheel(prop) {
 
       var Seconds_from_T1_to_T2 = dif / 1000;
       var Seconds_Between_Dates = parseInt(Math.abs(Seconds_from_T1_to_T2));
+      if (Seconds_Between_Dates >= 0 && Seconds_Between_Dates <= 16) {
+        setTime(parseInt(Seconds_Between_Dates));
+        //console.log(Seconds_Between_Dates);
 
-      setTime(parseInt(Seconds_Between_Dates));
+        timer = setTimeout(() => {
+          mytime();
+        }, 1000);
+      }
     } else {
       timer = setTimeout(() => {
         mytime();
@@ -125,9 +113,9 @@ function CountWheel(prop) {
   }
   return (
     <>
-      {15 - time > 0 && time < 15 && (
+      {15 - time > 0 && time > 0 && time < 15 && (
         <>
-          <div className="count" style={{ zIndex: 11, marginTop: -70 }}>
+          <div className="count" style={{ zIndex: 11, marginTop: -170 }}>
             <h2 className="text-shadows">{15 - time}</h2>
           </div>
         </>

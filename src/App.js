@@ -18,7 +18,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   let location = useLocation();
-  const [refresh, setRefresh] = useState(0);
+
   useEffect(() => {
     if (["/login", "/register"].includes(location.pathname)) {
       dispatch(clearMessage()); // clear message when changing location
@@ -39,7 +39,6 @@ const App = () => {
     };
   }, [currentUser, logOut]);
   useEffect(() => {
-    startServiceWorker();
     EventBus.on("setuser", (data) => {
       localStorage.setItem("user", JSON.stringify(data));
       EventBus.dispatch("user", data);
@@ -48,39 +47,7 @@ const App = () => {
       EventBus.remove("setuser");
     };
   }, []);
-  useEffect(() => {
-    const addBtn = document.querySelector(".add-button");
 
-    window.addEventListener("beforeinstallprompt", (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      window.deferredPrompt = e;
-      // Update UI to notify the user they can add to home screen
-      setRefresh(1);
-    });
-    addBtn.addEventListener("click", async () => {
-      console.log("👍", "butInstall-clicked");
-      const promptEvent = window.deferredPrompt;
-      if (!promptEvent) {
-        // The deferred prompt isn't available.
-        return;
-      }
-      console.log(promptEvent);
-      // Show the install prompt.
-      promptEvent.prompt();
-      // Log the result
-      const result = await promptEvent.userChoice;
-      console.log("👍", "userChoice", result);
-      // Reset the deferred prompt variable, since
-      // prompt() can only be called once.
-      window.deferredPrompt = null;
-    });
-    window.addEventListener("appinstalled", (event) => {
-      setRefresh(0);
-      window.deferredPrompt = null;
-    });
-  }, []);
   return (
     <Routes>
       <Route path="*" element={<BoardUser />} />

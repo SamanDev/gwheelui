@@ -135,7 +135,7 @@ function BetsWheel(prop) {
   const [user, setUser] = useState(oldduser);
   const [userbets, setuserbets] = useState([]);
   const [balance, setBalance] = useState(user?.balance2);
-
+  const contextRef = React.useRef();
   const [list, setList] = useState([]);
   const [con, setCon] = useState(false);
 
@@ -230,55 +230,78 @@ function BetsWheel(prop) {
 
   return (
     <>
-      {segX.map((seg, i) => {
-        var inf = getPosCount(list, seg);
-        return (
-          <Popup
-            content="Wait for next round."
-            key={i}
-            disabled={wheel?.status == "Pending" ? true : false}
-            trigger={
-              <Label
-                size="huge"
-                tag
-                onClick={() => {
-                  addBet(seg, prop.bet);
-                }}
-                className={
-                  wheel?.status == "Spining" && segments[wheel?.number] == seg
-                    ? "animate__tada animate__animated animate__repeat-3 pen"
-                    : wheel?.status == "Spining"
-                    ? "b0 pen"
-                    : "pen"
-                }
-                style={{
-                  background: getcolor(seg),
-                  color: getcolortext(seg),
-                  float: "left",
-                  width: 100,
-                  marginBottom: 5,
-                  cursor: "pointer",
-                }}
-              >
-                <div className={inf[1] > 0 ? "seg" : "seg none"}>
-                  <div className="segx">x{seg}</div>
-                  <div className="segttotal">
-                    {inf[1]}{" "}
-                    <img
-                      src={"/assets/users.svg"}
-                      style={{ width: 16, height: 16 }}
-                    />{" "}
-                    {inf[0] <= 1000
-                      ? formatDollar(inf[0])
-                      : formatDollar(inf[0] / 1000) + "K"}
-                  </div>
+      <div ref={contextRef}></div>
+      <Popup
+        context={contextRef}
+        open={true}
+        position="top left"
+        inverted
+        className={
+          wheel?.status != "Pending"
+            ? "animate__fadeInDown animate__animated"
+            : "animate__animated animate__fadeOutUp"
+        }
+      >
+        ⛔ Wait for next round.
+      </Popup>
+      <Popup
+        context={contextRef}
+        open={true}
+        position="top left"
+        inverted
+        className={
+          wheel?.status == "Pending"
+            ? "animate__fadeInDown animate__animated"
+            : "animate__animated animate__fadeOutUp"
+        }
+      >
+        Time to bet 👇
+      </Popup>
+      <div style={wheel?.status == "Pending" ? {} : { opacity: 0.7 }}>
+        {segX.map((seg, i) => {
+          var inf = getPosCount(list, seg);
+          return (
+            <Label
+              size="huge"
+              tag
+              key={i}
+              onClick={() => {
+                addBet(seg, prop.bet);
+              }}
+              className={
+                wheel?.status == "Spining" && segments[wheel?.number] == seg
+                  ? "animate__tada animate__animated animate__repeat-3 pen"
+                  : wheel?.status == "Spining"
+                  ? "b0 pen"
+                  : "pen"
+              }
+              style={{
+                background: getcolor(seg),
+                color: getcolortext(seg),
+
+                width: 100,
+                marginBottom: 5,
+                cursor: "pointer",
+              }}
+            >
+              <div className={inf[1] > 0 ? "seg" : "seg none"}>
+                <div className="segx">x{seg}</div>
+                <div className="segttotal">
+                  {inf[1]}{" "}
+                  <img
+                    src={"/assets/users.svg"}
+                    style={{ width: 16, height: 16 }}
+                  />{" "}
+                  {inf[0] <= 1000
+                    ? formatDollar(inf[0])
+                    : formatDollar(inf[0] / 1000) + "K"}
                 </div>
-                <div className="betarea">{haveBet(seg, list, user)}</div>
-              </Label>
-            }
-          />
-        );
-      })}
+              </div>
+              <div className="betarea">{haveBet(seg, list, user)}</div>
+            </Label>
+          );
+        })}
+      </div>
     </>
   );
 }

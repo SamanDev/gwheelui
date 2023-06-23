@@ -60,7 +60,7 @@ function BetsWheel(prop) {
       style={wheel?.status != "Pending" ? { opacity: 0.5 } : { opacity: 1 }}
       className="chipps"
     >
-      <div className="chiparea">
+      <div>
         <div style={user?.balance2 >= 1 ? {} : { opacity: 0.5 }}>
           <GetChip chip={1} {...prop} />
         </div>

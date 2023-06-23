@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventBus from "../common/EventBus";
-import { Icon } from "semantic-ui-react";
 import { Jetton, UsersIcon, formatDollar } from "../utils/include";
-import { Link } from "react-router-dom";
 
 function BetsWheel(prop) {
   const oldduser = JSON.parse(localStorage.getItem("user"));
@@ -57,7 +55,7 @@ function BetsWheel(prop) {
             user?.image +
             ".webp"
           }
-          style={{ height: 30 }}
+          style={{ height: 40 }}
         />
         <b>{user?.username}</b>
         <div style={{ float: "right" }}>

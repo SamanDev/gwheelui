@@ -6,7 +6,7 @@ module.exports = {
         hostname: "",
         pathname: "/ws",
         password: "dev-server",
-        port: 8080,
+        port: 3000,
         protocol: "ws",
         username: "webpack",
       },

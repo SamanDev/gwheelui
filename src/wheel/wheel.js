@@ -70,7 +70,7 @@ function MNyWheel(prop) {
   }, [wheel?.status]);
   if (!wheel?.status) {
     return (
-      <div className="mainwheel mywhell animate__bounceIn animate__animated">
+      <div className="mainwheel mywhell">
         <CountWheel wheel={wheel} {...prop} />
       </div>
     );
@@ -78,8 +78,8 @@ function MNyWheel(prop) {
 
   return (
     <>
-      <div className="mainwheel mywhell ">
-        <CountWheel wheel={wheel} {...prop} />
+      <div className="mainwheel mywhell">
+        <CountWheel wheel={wheel} />
         <div className="countover">
           <img src="/assets/cadr3.png" id="cadr" />
           <img src="/assets/cadr4.png" id="cadr2" />
@@ -108,8 +108,6 @@ function MNyWheel(prop) {
         />
 
         <Modalwin wheel={wheel} />
-
-        <div className="ws"></div>
       </div>
     </>
   );

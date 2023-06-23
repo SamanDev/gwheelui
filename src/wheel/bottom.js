@@ -3,8 +3,6 @@ import { Grid } from "semantic-ui-react";
 import BetsWheel from "./bets";
 
 import ChipsWheel from "./chips";
-import ChatWheel from "./chat";
-import SendChatWheel from "./sendchat";
 const GridExampleDividedPhrase = (prop) => {
   const [bet, setBet] = useState(
     localStorage.getItem("setbet") ? localStorage.getItem("setbet") : 5
@@ -15,13 +13,13 @@ const GridExampleDividedPhrase = (prop) => {
   }, [bet]);
   return (
     <>
-      <Grid columns="three">
+      <Grid columns="two">
         <Grid.Row style={{ margin: 0 }}>
-          <Grid.Column style={{ padding: 0 }}>
+          <Grid.Column>
             <BetsWheel bet={bet} setBet={setBet} />
           </Grid.Column>
-          <Grid.Column style={{ padding: 0 }}></Grid.Column>
-          <Grid.Column style={{ padding: 0 }}>
+
+          <Grid.Column>
             <ChipsWheel bet={bet} setBet={setBet} />
           </Grid.Column>
         </Grid.Row>

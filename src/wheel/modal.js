@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Modal,
-  Segment,
-  Statistic,
-  Image,
-  Divider,
-  Label,
-} from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 
 import EventBus from "../common/EventBus";
 import {
@@ -16,7 +8,6 @@ import {
   userBet,
   segments,
   getcolor,
-  getcolortext,
   Jetton,
   groupByMultipleFields,
   formatDollar,
@@ -32,7 +23,8 @@ const getDelts = (item, betx, tit, num) => {
         style={{
           position: "absolute",
           width: "100%",
-          height: "100%",
+          top: 0,
+          bottom: 0,
           textAlign: "center",
           zIndex: 120,
           color: "white",
@@ -45,7 +37,6 @@ const getDelts = (item, betx, tit, num) => {
         <br /> <b>{tit}</b> <br />
         {formatDollar(item?.bet * betx)}
         <Jetton style={{ width: 20, height: 20, display: "inline" }} />
-        <br />
       </span>
       <Image
         circular
@@ -56,13 +47,13 @@ const getDelts = (item, betx, tit, num) => {
         }
         centered
         style={{
-          width: "15vw",
-          height: "15vw",
+          width: "18vw",
+          height: "18vw",
           maxWidth: "100px",
           maxHeight: "100px",
 
           transition: "all .5s ease-in",
-          background: getcolor(item?.position) + "70",
+          background: "rgba(0,0,0,0.8)",
           boxShadow:
             "0 0 2px black,0 0 0 " +
             getBorder(item?.bet * betx) +
@@ -82,8 +73,8 @@ const getBorder = (bet) => {
   if (_b < 0) {
     _b = _b * -1;
   }
-  if (_b / 50 > 20) return 20;
-  return _b / 50;
+  if (_b / 10 > 20) return 20;
+  return _b / 10;
 };
 const bigWin = (list) => {
   var _l = list
@@ -179,7 +170,7 @@ function ModalExampleModal(prop) {
   }, [wheel?.status]);
 
   if (!wheel?.status) {
-    return <div className="navbar-nav ml-auto"></div>;
+    return null;
   }
   return (
     <div className="count">

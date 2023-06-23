@@ -7,10 +7,11 @@ function MNyWheel() {
   return (
     <>
       <InfoWheel />
+      <div className="cadr">
+        <ShowWheel />
 
-      <ShowWheel />
-
-      <BottomWheel />
+        <BottomWheel />
+      </div>
     </>
   );
 }
