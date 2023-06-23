@@ -15,10 +15,11 @@ function BetsWheel(prop) {
     });
     EventBus.on("user", (data) => {
       setUser(data);
+      setBalance(data.balance2);
     });
 
     EventBus.on("balance", (data) => {
-      var newuser = oldduser;
+      var newuser = JSON.parse(localStorage.getItem("user"));
       newuser.balance2 = data;
       localStorage.setItem("user", JSON.stringify(newuser));
       setBalance(data);
@@ -36,19 +37,19 @@ function BetsWheel(prop) {
     var nextbet = bet;
 
     if (nextbet > balance) {
-      nextbet = 5000;
-    }
-    if (nextbet > balance) {
-      nextbet = 1000;
-    }
-    if (nextbet > balance) {
       nextbet = 500;
     }
     if (nextbet > balance) {
-      nextbet = 250;
+      nextbet = 100;
     }
     if (nextbet > balance) {
-      nextbet = 50;
+      nextbet = 25;
+    }
+    if (nextbet > balance) {
+      nextbet = 5;
+    }
+    if (nextbet > balance) {
+      nextbet = 1;
     }
     if (nextbet != bet) {
       prop.setBet(nextbet);

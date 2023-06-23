@@ -20,6 +20,18 @@ function BetsWheel(prop) {
     EventBus.on("online", (data) => {
       setOnline(data);
     });
+    EventBus.on("users", (data) => {
+      data
+        .filter(
+          (u) => u.username == user.username && u.win > 0
+          //s(u) => parseInt(u.position) == parseInt(pos)
+        )
+
+        .map((item, i) => {
+          var newuser = JSON.parse(localStorage.getItem("user"));
+          EventBus.dispatch("balance", newuser.balance2 + item.win);
+        });
+    });
     return () => {
       EventBus.remove("user");
       EventBus.remove("balance");
@@ -27,13 +39,15 @@ function BetsWheel(prop) {
     };
   }, []);
   useEffect(() => {
-    var newuser = oldduser;
+    var newuser = JSON.parse(localStorage.getItem("user"));
     try {
       newuser.balance2 = balance;
       localStorage.setItem("user", JSON.stringify(newuser));
     } catch (error) {}
   }, [balance]);
-
+  if (!user?.image) {
+    return false;
+  }
   return (
     <>
       <div className="info">

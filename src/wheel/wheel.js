@@ -35,8 +35,6 @@ function MNyWheel(prop) {
     });
 
     return () => {
-      setMustSpin(false);
-      setWheel();
       EventBus.remove("wheel");
     };
   }, []);
@@ -80,7 +78,7 @@ function MNyWheel(prop) {
 
   return (
     <>
-      <div className="mainwheel mywhell animate__rotateInDownRight animate__animated">
+      <div className="mainwheel mywhell ">
         <CountWheel wheel={wheel} {...prop} />
         <div className="countover">
           <img src="/assets/cadr3.png" id="cadr" />

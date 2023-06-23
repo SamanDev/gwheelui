@@ -149,6 +149,9 @@ function BetsWheel(prop) {
       setUser(data);
       setBalance(data.balance2);
     });
+    EventBus.on("balance", (data) => {
+      setBalance(data);
+    });
     EventBus.on("connect", (data) => {
       setCon(data);
     });
@@ -167,10 +170,6 @@ function BetsWheel(prop) {
       setuserbets([]);
     });
     return () => {
-      setWheel();
-      setuserbets([]);
-      setCon(false);
-      localStorage.removeItem("wheel");
       EventBus.remove("wheel");
       EventBus.remove("user");
       EventBus.remove("users");
@@ -236,11 +235,11 @@ function BetsWheel(prop) {
         return (
           <Popup
             content="Wait for next round."
+            key={i}
             disabled={wheel?.status == "Pending" ? true : false}
             trigger={
               <Label
                 size="huge"
-                key={i}
                 tag
                 onClick={() => {
                   addBet(seg, prop.bet);

@@ -7,7 +7,7 @@ import ChatWheel from "./chat";
 import SendChatWheel from "./sendchat";
 const GridExampleDividedPhrase = (prop) => {
   const [bet, setBet] = useState(
-    localStorage.getItem("setbet") ? localStorage.getItem("setbet") : 250
+    localStorage.getItem("setbet") ? localStorage.getItem("setbet") : 5
   );
 
   useEffect(() => {
