@@ -1383,7 +1383,7 @@ canvas {
     margin: 0;
   }
 }
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 900px) {
   .info {
     font-size: 14px;
     padding: 0 10px;
