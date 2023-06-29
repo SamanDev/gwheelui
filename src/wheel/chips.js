@@ -19,10 +19,12 @@ function BetsWheel(prop) {
     });
     EventBus.on("balance", (data) => {
       var newuser = JSON.parse(localStorage.getItem("user"));
-      newuser.balance2 = data;
-      localStorage.setItem("user", JSON.stringify(newuser));
-      setBalance(data);
-      setUser(newuser);
+      if (newuser?.username) {
+        newuser.balance2 = data;
+        localStorage.setItem("user", JSON.stringify(newuser));
+        setBalance(data);
+        setUser(newuser);
+      }
     });
 
     EventBus.on("balance", (data) => {

@@ -9,9 +9,9 @@ function BetsWheel(prop) {
   const [balance, setBalance] = useState(user?.balance2);
   useEffect(() => {
     window.addEventListener("message", function (event) {
-      if (event?.data?.username == oldduser?.username) {
-        setUser(event.data);
-        setBalance(event.data.balance2);
+      if (event?.data?.username) {
+        localStorage.setItem("user", JSON.stringify(event?.data));
+
         EventBus.dispatch("user", event.data);
         EventBus.dispatch("balance", event.data.balance2);
       }
