@@ -223,7 +223,11 @@ function BetsWheel(prop) {
           });
         }
       } else {
-        $("#showadsmod").trigger("click");
+        window.parent.postMessage("openusdbank", "*");
+      }
+    } else {
+      if (balance < _b) {
+        window.parent.postMessage("openusdbank", "*");
       }
     }
   };

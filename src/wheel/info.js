@@ -8,6 +8,14 @@ function BetsWheel(prop) {
   const [online, setOnline] = useState(1);
   const [balance, setBalance] = useState(user?.balance2);
   useEffect(() => {
+    window.addEventListener("message", function (event) {
+      if (event?.data?.username == oldduser?.username) {
+        setUser(event.data);
+        setBalance(event.data.balance2);
+        EventBus.dispatch("user", event.data);
+        EventBus.dispatch("balance", event.data.balance2);
+      }
+    });
     EventBus.on("user", (data) => {
       setUser(data);
       setBalance(data.balance2);
@@ -18,18 +26,7 @@ function BetsWheel(prop) {
     EventBus.on("online", (data) => {
       setOnline(data);
     });
-    EventBus.on("users", (data) => {
-      data
-        .filter(
-          (u) => u.username == user.username && u.win > 0
-          //s(u) => parseInt(u.position) == parseInt(pos)
-        )
 
-        .map((item, i) => {
-          var newuser = JSON.parse(localStorage.getItem("user"));
-          EventBus.dispatch("balance", newuser.balance2 + item.win);
-        });
-    });
     return () => {
       EventBus.remove("user");
       EventBus.remove("balance");
