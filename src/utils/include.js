@@ -1,3 +1,4 @@
+import { Icon } from "semantic-ui-react";
 export const segments = [
   0, 2, 4, 2, 10, 2, 4, 2, 8, 2, 4, 2, 25, 2, 4, 2, 8, 2, 4, 2, 10, 2, 4, 2, 8,
   2, 4, 2, 20,
@@ -36,21 +37,13 @@ export const getcolortext = (item) => {
 };
 export function Jetton(prop) {
   return (
-    <img
-      src={"/assets/chip.svg"}
-      alt="chipicon"
-      style={prop.style ? prop.style : { width: 23, height: 23 }}
-    />
+    <>
+      <Icon name="dollar" color="teal" />
+    </>
   );
 }
 export const UsersIcon = (prop) => {
-  return (
-    <img
-      src={"/assets/users.svg"}
-      alt="usersicon"
-      style={prop.style ? prop.style : { width: 23, height: 23 }}
-    />
-  );
+  return <Icon name="users" color="yellow" />;
 };
 export function groupBySingleField(data, field) {
   if (!data) return null;
@@ -172,7 +165,7 @@ export function formatDollar(num) {
           .reverse()
           .reduce(function (acc, num, i, orig) {
             return num + (num != "-" && i && !(i % 3) ? "," : "") + acc;
-          }, "")
+          }, ".00")
       );
     } else {
       return (

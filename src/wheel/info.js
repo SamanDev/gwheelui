@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventBus from "../common/EventBus";
 import { Jetton, UsersIcon, formatDollar } from "../utils/include";
-
+import { Icon, Label } from "semantic-ui-react";
 function BetsWheel(prop) {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
@@ -43,6 +43,9 @@ function BetsWheel(prop) {
   if (!user?.image) {
     return false;
   }
+  if (!user?.username) {
+    return false;
+  }
   return (
     <>
       <div className="info">
@@ -52,26 +55,24 @@ function BetsWheel(prop) {
             user?.image +
             ".webp"
           }
-          style={{ height: 40 }}
+          style={{ height: 35, marginRight: 10 }}
         />
         <b>{user?.username}</b>
         <div style={{ float: "right" }}>
-          <span>{online}</span>{" "}
           <span>
-            {" "}
-            <UsersIcon
-              colors="outline:#794628,primary:#e8b730,secondary:#e8b730"
-              style={{ width: 25, height: 25 }}
-            />
-          </span>
-          <span>
-            <Jetton />
-          </span>{" "}
-          <span>
-            {" "}
-            {balance == -1
-              ? formatDollar(user?.balance2)
-              : formatDollar(balance)}
+            <Label color="black">
+              <UsersIcon
+                colors="outline:#794628,primary:#e8b730,secondary:#e8b730"
+                style={{ width: 20, height: 20 }}
+              />
+              {online}
+            </Label>
+            <Label color="black">
+              <Jetton />
+              {balance == -1
+                ? formatDollar(user?.balance2)
+                : formatDollar(balance)}
+            </Label>
           </span>
         </div>
       </div>

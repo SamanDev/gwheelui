@@ -14,6 +14,7 @@ import { startServiceWorker } from "./utils/include";
 
 import EventBus from "./common/EventBus";
 const App = () => {
+  localStorage.removeItem("user");
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
