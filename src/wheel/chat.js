@@ -31,7 +31,7 @@ function ChatWheel(prop) {
         width: "130%",
         height: 260,
         overflow: "auto",
-        marginTop: 30,
+
         overflowX: "hidden",
         zIndex: 100,
       }}
@@ -43,6 +43,7 @@ function ChatWheel(prop) {
             username={cmd.username}
             image={cmd.image}
             txt={cmd.txt}
+            wheel={cmd?.wheel}
           />
         );
       })}

@@ -105,8 +105,13 @@ div.home {
   opacity: 0;
 }
 
-.comment *:not(input) {
+.comment *:not(input):not(.label) {
   color: #eee !important;
+}
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
+  z-index: 1999 !important;
 }
 .comment input {
   position: relative;
@@ -516,7 +521,9 @@ tr .ui,
   height: 360px;
   overflow: hidden;
 }
-
+.three .ui.mini.comments {
+  font-size: 0.578571429rem;
+}
 #playButton {
   display: none;
   margin-top: 10px;
@@ -1312,7 +1319,7 @@ canvas {
   background: #d2b10a;
   color: #ffffff;
 }
-.two.column.grid {
+.three.column.grid {
   transform-origin: center right;
   top: 30%;
   transform: translateY(-50%) scale(1);
@@ -1353,7 +1360,7 @@ canvas {
     width: 60vw;
     float: left;
   }
-  .two.column.grid {
+  .three.column.grid {
     transform-origin: center right;
     top: 40%;
     transform: translateY(-50%) scale(0.8);
@@ -1389,7 +1396,8 @@ canvas {
     width: 70vw;
     float: left;
   }
-  .two.column.grid {
+
+  .three.column.grid {
     transform-origin: center right;
     top: 40%;
     transform: translateY(-50%) scale(1.3);

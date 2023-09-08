@@ -30,7 +30,7 @@ export const getcolor = (item) => {
 };
 export const getcolortext = (item) => {
   var def = "#ffffff";
-  if (item == 8) {
+  if (parseInt(item) == 8) {
     def = "#000000";
   }
   return def;

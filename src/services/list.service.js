@@ -3,8 +3,8 @@ import authHeader from "./auth-header";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.khodekhalse.com/lastlist"
-    : "http://api.khodekhalse.com/lastlist";
+    ? "https://wserverget.khodekhalse.com/lastlist"
+    : "https://wserverget.khodekhalse.com/lastlist";
 
 const getPublicContent = (data) => {
   return axios.get(API_URL + "?l=" + data.command);

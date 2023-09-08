@@ -22,13 +22,16 @@ function ModalExampleModal(prop) {
     $("body").append(sorted[0]);
     if (open) {
       ListService.getPublicContent({
-        command: "wheelid&id=" + prop.wheel._id,
+        command: "wheelid&id=" + prop.wheel?._id,
       }).then((response) => {
         setWheel(response.data);
         userBets = userBet(response.data, user?.username);
       });
     }
   }, [open]);
+  if (!wheel || prop.wheel?.total == 0) {
+    return null;
+  }
   return (
     <>
       <Modal

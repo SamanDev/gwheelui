@@ -13,6 +13,7 @@ import {
   getcolortext,
   getPrize,
   formatDollar,
+  Jetton,
 } from "./utils/include";
 
 const TableExampleSingleLine = (prop) => {
@@ -68,7 +69,7 @@ const TableExampleSingleLine = (prop) => {
         });
       }
     }
-    console.log(stat);
+
     setList(stat);
   }, [userbets]);
   useEffect(() => {
@@ -144,8 +145,13 @@ const TableExampleSingleLine = (prop) => {
                       }
                     >
                       <b>{item.username}</b>
+
                       <Image
-                        src={item.image}
+                        src={
+                          "https://khodekhalse.com/assets/images/stars/lvl" +
+                          item?.image +
+                          ".webp"
+                        }
                         alt={item.username + " image"}
                         circular
                         bordered
@@ -158,7 +164,7 @@ const TableExampleSingleLine = (prop) => {
                         className="ltr"
                         style={{ width: 60, display: "inline-block" }}
                       >
-                        {formatDollar(item.bet)}
+                        <Jetton /> {formatDollar(item.bet)}
                       </div>
                       <Label
                         style={{
@@ -173,7 +179,9 @@ const TableExampleSingleLine = (prop) => {
 
                     <Table.Cell>
                       {wheel?.status == "Spining" || wheel?.status == "Done" ? (
-                        <b>{formatDollar(item.win)}</b>
+                        <b>
+                          <Jetton /> {formatDollar(item.win)}
+                        </b>
                       ) : (
                         <>-</>
                       )}
