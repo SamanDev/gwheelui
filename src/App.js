@@ -10,9 +10,30 @@ import BoardUser from "./components/BoardUser";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
-import { startServiceWorker } from "./utils/include";
 
 import EventBus from "./common/EventBus";
+const AppOrtion = (agel) => {
+  var scale = window.outerWidth / 1000;
+  if (agel == 90 && scale < 1) {
+    document
+      .querySelector('meta[name="viewport"]')
+      .setAttribute(
+        "content",
+        "width=device-width, initial-scale=" +
+          scale +
+          ",maximum-scale=" +
+          scale +
+          ""
+      );
+  } else {
+    document
+      .querySelector('meta[name="viewport"]')
+      .setAttribute(
+        "content",
+        "width=device-width,initial-scale=1,maximum-scale=1"
+      );
+  }
+};
 const App = () => {
   localStorage.removeItem("user");
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -20,6 +41,26 @@ const App = () => {
 
   let location = useLocation();
 
+  useEffect(() => {
+    setTimeout(() => {
+      var agel = window.outerWidth > window.outerHeight ? 90 : 0;
+      AppOrtion(agel);
+    }, 200);
+
+    window.addEventListener("orientationchange", (event) => {
+      document
+        .querySelector('meta[name="viewport"]')
+        .setAttribute(
+          "content",
+          "width=device-width,initial-scale=1,maximum-scale=1"
+        );
+
+      setTimeout(() => {
+        var agel = window.outerWidth > window.outerHeight ? 90 : 0;
+        AppOrtion(agel);
+      }, 200);
+    });
+  }, []);
   useEffect(() => {
     if (["/login", "/register"].includes(location.pathname)) {
       dispatch(clearMessage()); // clear message when changing location

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image } from "semantic-ui-react";
+import { Image, Label } from "semantic-ui-react";
 
 import EventBus from "../common/EventBus";
 import {
@@ -35,8 +35,10 @@ const getDelts = (item, betx, tit, num) => {
       >
         <small>{item?.username}</small>
         <br /> <b>{tit}</b> <br />
-        {formatDollar(item?.bet * betx)}
-        <Jetton style={{ width: 20, height: 20, display: "inline" }} />
+        <Label color={tit.indexOf("Lose") > -1 ? "red" : "black"}>
+          <Jetton />
+          {formatDollar(item?.bet * betx)}
+        </Label>
       </span>
       <Image
         circular

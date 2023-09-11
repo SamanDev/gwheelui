@@ -1327,6 +1327,7 @@ canvas {
   box-shadow: 0 0 20px 1px rgba(12, 12, 0, 0.5) !important;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 @media only screen and (min-width: 700px) {
   .info {
     padding: 0 10px;
@@ -1360,14 +1361,62 @@ canvas {
     width: 60vw;
     float: left;
   }
+
   .three.column.grid {
     transform-origin: center right;
     top: 40%;
-    transform: translateY(-50%) scale(0.8);
+    transform: translateY(-50%) scale(0.9);
     position: relative;
     box-shadow: 0 0 20px 1px rgba(12, 12, 0, 0.5) !important;
     background-color: rgba(0, 0, 0, 0.4);
     margin: 0;
+  }
+
+  .three .ui.mini.comments {
+    font-size: 0.78571429rem;
+  }
+}
+
+@media only screen and (min-width: 750px) and (orientation: portrait) {
+  .info {
+    font-size: 14px;
+    padding: 0 10px;
+
+    line-height: 35px;
+    height: 38px;
+    position: relative;
+  }
+  .cadr {
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    padding: 0;
+  }
+  .mywhell {
+    transform-origin: center;
+    padding: 0;
+    top: 5%;
+    transform: scale(1.1);
+    width: 100vw;
+    float: none;
+  }
+
+  .three .ui.mini.comments {
+    font-size: 0.78571429rem;
+  }
+  .three.column.grid {
+    transform-origin: center;
+    width: 70vw;
+    margin: auto;
+    top: 15%;
+    transform: scale(1);
+    position: relative;
+    box-shadow: 0 0 20px 1px rgba(12, 12, 0, 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.4);
   }
 }
 @media only screen and (min-width: 900px) {
@@ -1391,15 +1440,18 @@ canvas {
   .mywhell {
     transform-origin: center right;
     padding: 0;
-    top: 40%;
-    transform: translateY(-50%) scale(1.3);
-    width: 70vw;
+    top: 45%;
+    transform: translateY(-50%) translateX(-10%) scale(1.1);
+    width: 60vw;
     float: left;
   }
 
+  .three .ui.mini.comments {
+    font-size: 0.78571429rem;
+  }
   .three.column.grid {
     transform-origin: center right;
-    top: 40%;
+    top: 45%;
     transform: translateY(-50%) scale(1.3);
     position: relative;
     box-shadow: 0 0 20px 1px rgba(12, 12, 0, 0.5) !important;

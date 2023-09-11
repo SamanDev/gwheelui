@@ -28,12 +28,13 @@ function ChatWheel(prop) {
       className="mainwheel"
       id="chatarea"
       style={{
-        width: "130%",
+        width: "150%",
         height: 260,
         overflow: "auto",
-
+        paddingLeft: 10,
         overflowX: "hidden",
         zIndex: 100,
+        marginTop: 10,
       }}
     >
       {userbets.map((cmd, i) => {
