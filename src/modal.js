@@ -19,7 +19,7 @@ function ModalExampleModal(prop) {
   var userBets = userBet(wheel, user?.username);
   useEffect(() => {
     var sorted = $(".modals").sort(sortByZIndex);
-    $("body").append(sorted[0]);
+    //$("body").append(sorted[0]);
     if (open) {
       ListService.getPublicContent({
         command: "wheelid&id=" + prop.wheel?._id,
@@ -87,46 +87,52 @@ function ModalExampleModal(prop) {
               <Statistic.Value>{formatDollar(item.net)}</Statistic.Value>
               <Statistic.Label>Win</Statistic.Label>
             </Statistic>
-            <br />
-            <Statistic
-              color={parseFloat(userBets[0]).toFixed(2) > 0 ? "orange" : "grey"}
-              inverted
-              size="mini"
-              style={
-                parseFloat(userBets[0]).toFixed(2) == 0
-                  ? { opacity: 0.5 }
-                  : { opacity: 1 }
-              }
-            >
-              <Statistic.Value>{formatDollar(userBets[0])}</Statistic.Value>
-              <Statistic.Label>You</Statistic.Label>
-            </Statistic>
-            <Statistic
-              inverted
-              size="mini"
-              color={
-                parseFloat(userBets[1]) > parseFloat(userBets[0])
-                  ? "green"
-                  : parseFloat(userBets[0]).toFixed(2) > 0
-                  ? "red"
-                  : "grey"
-              }
-              style={
-                parseFloat(userBets[0]).toFixed(2) == 0
-                  ? { opacity: 0.5 }
-                  : { opacity: 1 }
-              }
-            >
-              <Statistic.Value>{formatDollar(userBets[1])}</Statistic.Value>
-              <Statistic.Label>Win</Statistic.Label>
-            </Statistic>
+            {userBets[0] > 0 && userBets[0] < item.total && (
+              <>
+                <br />
+                <Statistic
+                  color={
+                    parseFloat(userBets[0]).toFixed(2) > 0 ? "orange" : "grey"
+                  }
+                  inverted
+                  size="mini"
+                  style={
+                    parseFloat(userBets[0]).toFixed(2) == 0
+                      ? { opacity: 0.5 }
+                      : { opacity: 1 }
+                  }
+                >
+                  <Statistic.Value>{formatDollar(userBets[0])}</Statistic.Value>
+                  <Statistic.Label>You</Statistic.Label>
+                </Statistic>
+                <Statistic
+                  inverted
+                  size="mini"
+                  color={
+                    parseFloat(userBets[1]) > parseFloat(userBets[0])
+                      ? "green"
+                      : parseFloat(userBets[0]).toFixed(2) > 0
+                      ? "red"
+                      : "grey"
+                  }
+                  style={
+                    parseFloat(userBets[0]).toFixed(2) == 0
+                      ? { opacity: 0.5 }
+                      : { opacity: 1 }
+                  }
+                >
+                  <Statistic.Value>{formatDollar(userBets[1])}</Statistic.Value>
+                  <Statistic.Label>Win</Statistic.Label>
+                </Statistic>
+              </>
+            )}
           </Segment>
 
-          <Mywhell {...prop} last={true} />
+          <Mywhell wheel={wheel} last={true} />
 
           <Segment color="black" inverted size="mini" className="res">
             <div className="table rsec">
-              <List {...prop} wheel={wheel} last={true} />
+              <List wheel={wheel} user={user} last={true} />
             </div>
           </Segment>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Comment, Image, Label, Divider } from "semantic-ui-react";
 import { getcolor, getcolortext } from "./include";
 import Mod from "../modal";
@@ -15,47 +15,51 @@ var item = {
   _id: "64fa6ed1ba66418901565634",
   __v: 0,
 };
-const CommentExampleMetadata = (prop) => (
-  <Comment.Group size="mini">
-    <Comment>
-      {prop.image && (
-        <Comment.Avatar
-          as={Image}
-          circular
-          src={
-            "https://khodekhalse.com/assets/images/stars/lvl" +
-            prop.image +
-            ".webp"
-          }
-        />
-      )}
+const CommentExampleMetadata = (prop) => {
+  const oldduser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(oldduser);
+  return (
+    <Comment.Group size="mini">
+      <Comment>
+        {prop.image && (
+          <Comment.Avatar
+            as={Image}
+            circular
+            src={
+              "https://khodekhalse.com/assets/images/stars/lvl" +
+              prop.image +
+              ".webp"
+            }
+          />
+        )}
 
-      <Comment.Content>
-        <Comment.Author>{prop.username}</Comment.Author>
+        <Comment.Content>
+          <Comment.Author>{prop.username}</Comment.Author>
 
-        <Comment.Text>
-          {prop.txt.indexOf(" WheelDone") > -1 ? (
-            <>
-              <Mod wheel={prop.wheel} />
-              <Label
-                size="mini"
-                style={{
-                  background: getcolor(prop.txt.replace(" WheelDone", "")),
-                  color: getcolortext(prop.txt.replace(" WheelDone", "")),
-                }}
-              >
-                x{prop.txt.replace(" WheelDone", "")}
-              </Label>
+          <Comment.Text>
+            {prop.txt.indexOf(" WheelDone") > -1 ? (
+              <>
+                <Mod wheel={prop.wheel} user={user} />
+                <Label
+                  size="mini"
+                  style={{
+                    background: getcolor(prop.txt.replace(" WheelDone", "")),
+                    color: getcolortext(prop.txt.replace(" WheelDone", "")),
+                  }}
+                >
+                  x{prop.txt.replace(" WheelDone", "")}
+                </Label>
 
-              <Divider clearing inverted />
-            </>
-          ) : (
-            <>{prop.txt}</>
-          )}
-        </Comment.Text>
-      </Comment.Content>
-    </Comment>
-  </Comment.Group>
-);
+                <Divider clearing inverted />
+              </>
+            ) : (
+              <>{prop.txt}</>
+            )}
+          </Comment.Text>
+        </Comment.Content>
+      </Comment>
+    </Comment.Group>
+  );
+};
 
 export default CommentExampleMetadata;

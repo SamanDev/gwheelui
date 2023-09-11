@@ -39,7 +39,7 @@ function MNyWheel(prop) {
     };
   }, []);
   useEffect(() => {
-    $(".bhdLno img").remove();
+    $(".mainwheel .bhdLno img").remove();
 
     if (wheel?.status) {
       if (wheel?.status == "Spin") {
@@ -81,35 +81,34 @@ function MNyWheel(prop) {
   return (
     <>
       <div className="mainwheel mywhell">
-        <div className="scalewhell">
-          <CountWheel wheel={wheel} />
-          <div className="countover">
-            <img src="/assets/cadr3.png" id="cadr" />
-            <img src="/assets/cadr4.png" id="cadr2" />
-          </div>
-          <Wheel
-            data={_l}
-            mustStartSpinning={mustspin}
-            outerBorderWidth={0}
-            prizeNumber={prizeNumber}
-            startingOptionIndex={wheel.startNum}
-            outerBorderColor={"#eeeeee"}
-            innerRadius={10}
-            innerBorderColor={"#000000"}
-            innerBorderWidth={0}
-            radiusLineColor={"#000000"}
-            radiusLineWidth={0}
-            textDistance={80}
-            fontSize={[20]}
-            spinDuration={[parseFloat(Seconds_Between_Dates)]}
-            onStopSpinning={() => {
-              $(".mainwheel .bhdLno").addClass(
-                "animate__flash animate__animated animate__faster"
-              );
-              setMustSpin(false);
-            }}
-          />
+        <CountWheel wheel={wheel} />
+        <div className="countover">
+          <img src="/assets/cadr3.png" id="cadr" />
+          <img src="/assets/cadr4.png" id="cadr2" />
         </div>
+        <Wheel
+          data={_l}
+          mustStartSpinning={mustspin}
+          outerBorderWidth={0}
+          prizeNumber={prizeNumber}
+          startingOptionIndex={wheel.startNum}
+          outerBorderColor={"#eeeeee"}
+          innerRadius={10}
+          innerBorderColor={"#000000"}
+          innerBorderWidth={0}
+          radiusLineColor={"#000000"}
+          radiusLineWidth={0}
+          textDistance={80}
+          fontSize={[20]}
+          spinDuration={[parseFloat(Seconds_Between_Dates)]}
+          onStopSpinning={() => {
+            $(".mainwheel .bhdLno").addClass(
+              "animate__flash animate__animated animate__faster"
+            );
+            setMustSpin(false);
+          }}
+        />
+
         <Modalwin wheel={wheel} />
       </div>
     </>
