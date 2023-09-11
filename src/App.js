@@ -13,7 +13,7 @@ import { clearMessage } from "./actions/message";
 
 import EventBus from "./common/EventBus";
 const AppOrtion = (agel) => {
-  var scale = window.outerWidth / 1000;
+  var scale = window.outerWidth / 1100;
   if (agel == 90 && scale < 1) {
     document
       .querySelector('meta[name="viewport"]')
@@ -57,6 +57,7 @@ const App = () => {
 
       setTimeout(() => {
         var agel = window.outerWidth > window.outerHeight ? 90 : 0;
+        console.log(agel);
         AppOrtion(agel);
       }, 200);
     });
