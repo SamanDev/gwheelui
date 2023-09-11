@@ -45,11 +45,11 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       window.parent.postMessage("AppOrtion", "*");
-    }, 200);
+    }, 400);
     window.addEventListener("orientationchange", (event) => {
       setTimeout(() => {
         window.parent.postMessage("AppOrtion", "*");
-      }, 200);
+      }, 400);
     });
   }, []);
   useEffect(() => {
