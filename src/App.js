@@ -7,7 +7,7 @@ import "./assets/App.css";
 import "animate.css";
 
 import BoardUser from "./components/BoardUser";
-
+import $ from "jquery";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 
@@ -15,6 +15,7 @@ import EventBus from "./common/EventBus";
 const AppOrtion = (agel) => {
   var scale = window.outerWidth / 1100;
   if (agel == 90 && scale < 1) {
+    //window.parent.postMessage("AppOrtion", "*");
     document
       .querySelector('meta[name="viewport"]')
       .setAttribute(
@@ -43,22 +44,11 @@ const App = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      var agel = window.outerWidth > window.outerHeight ? 90 : 0;
-      AppOrtion(agel);
+      window.parent.postMessage("AppOrtion", "*");
     }, 200);
-
     window.addEventListener("orientationchange", (event) => {
-      document
-        .querySelector('meta[name="viewport"]')
-        .setAttribute(
-          "content",
-          "width=device-width,initial-scale=1,maximum-scale=1"
-        );
-
       setTimeout(() => {
-        var agel = window.outerWidth > window.outerHeight ? 90 : 0;
-        console.log(agel);
-        AppOrtion(agel);
+        window.parent.postMessage("AppOrtion", "*");
       }, 200);
     });
   }, []);
