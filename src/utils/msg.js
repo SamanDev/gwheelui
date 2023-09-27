@@ -18,7 +18,7 @@ var item = {
 var url =
   window.location != window.parent.location
     ? document.referrer
-    : document.location.href;
+    : window.parent.location;
 const CommentExampleMetadata = (prop) => {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
