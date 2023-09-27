@@ -46,15 +46,15 @@ function BetsWheel(prop) {
   if (!user?.username) {
     return false;
   }
+  var url =
+    window.location != window.parent.location
+      ? document.referrer
+      : document.location.href;
   return (
     <>
       <div className="info">
         <img
-          src={
-            "https://khodekhalse.com/assets/images/stars/lvl" +
-            user?.image +
-            ".webp"
-          }
+          src={url + "assets/images/stars/lvl" + user?.image + ".webp"}
           style={{ height: 35, marginRight: 10 }}
         />
         <b>{user?.username}</b>

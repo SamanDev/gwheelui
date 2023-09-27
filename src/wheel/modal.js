@@ -12,6 +12,10 @@ import {
   groupByMultipleFields,
   formatDollar,
 } from "../utils/include";
+var url =
+  window.location != window.parent.location
+    ? document.referrer
+    : document.location.href;
 const getDelts = (item, betx, tit, num) => {
   var outb = "black";
   if (betx == -1) {
@@ -42,11 +46,7 @@ const getDelts = (item, betx, tit, num) => {
       </span>
       <Image
         circular
-        src={
-          "https://khodekhalse.com/assets/images/stars/lvl" +
-          item?.image +
-          ".webp"
-        }
+        src={url + "assets/images/stars/lvl" + item?.image + ".webp"}
         centered
         style={{
           width: "18vw",

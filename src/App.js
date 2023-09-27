@@ -72,6 +72,7 @@ const App = () => {
     };
   }, [currentUser, logOut]);
   useEffect(() => {
+    window.parent.postMessage("userget", "*");
     EventBus.on("setuser", (data) => {
       localStorage.setItem("user", JSON.stringify(data));
       EventBus.dispatch("user", data);

@@ -15,6 +15,10 @@ var item = {
   _id: "64fa6ed1ba66418901565634",
   __v: 0,
 };
+var url =
+  window.location != window.parent.location
+    ? document.referrer
+    : document.location.href;
 const CommentExampleMetadata = (prop) => {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
@@ -25,11 +29,7 @@ const CommentExampleMetadata = (prop) => {
           <Comment.Avatar
             as={Image}
             circular
-            src={
-              "https://khodekhalse.com/assets/images/stars/lvl" +
-              prop.image +
-              ".webp"
-            }
+            src={url + "assets/images/stars/lvl" + prop.image + ".webp"}
           />
         )}
 

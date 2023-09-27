@@ -100,6 +100,10 @@ const TableExampleSingleLine = (prop) => {
       EventBus.remove("resetusers");
     };
   }, []);
+  var url =
+    window.location != window.parent.location
+      ? document.referrer
+      : document.location.href;
   return (
     <>
       <Table
@@ -148,7 +152,8 @@ const TableExampleSingleLine = (prop) => {
 
                       <Image
                         src={
-                          "https://khodekhalse.com/assets/images/stars/lvl" +
+                          url +
+                          "assets/images/stars/lvl" +
                           item?.image +
                           ".webp"
                         }
