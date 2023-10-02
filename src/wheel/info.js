@@ -47,7 +47,8 @@ function BetsWheel(prop) {
     return false;
   }
   var url =
-    window.location != window.parent.location
+    window.location != window.parent.location &&
+    window.parent.location.toString().indexOf(":") == -1
       ? window.parent.location
       : "https://www.khodekhalse.com/";
   return (
