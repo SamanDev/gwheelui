@@ -16,12 +16,12 @@ var item = {
   __v: 0,
 };
 var url =
-  window.location != window.parent.location &&
+  window.location != document.referrer &&
   window.location.toString().indexOf(":") == -1
-    ? window.parent.location
+    ? document.referrer
     : "https://www.khodekhalse.com/";
 console.log(window.location.toString());
-console.log(window.parent);
+console.log(document.referrer);
 const CommentExampleMetadata = (prop) => {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
