@@ -17,7 +17,7 @@ var item = {
 };
 var url =
   window.location != window.parent.location &&
-  window.parent.location.toString().indexOf(":") == -1
+  window.location.toString().indexOf(":") == -1
     ? window.parent.location
     : "https://www.khodekhalse.com/";
 const CommentExampleMetadata = (prop) => {

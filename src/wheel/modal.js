@@ -14,7 +14,7 @@ import {
 } from "../utils/include";
 var url =
   window.location != window.parent.location &&
-  window.parent.location.toString().indexOf(":") == -1
+  window.location.toString().indexOf(":") == -1
     ? window.parent.location
     : "https://www.khodekhalse.com/";
 const getDelts = (item, betx, tit, num) => {
