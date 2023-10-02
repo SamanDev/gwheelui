@@ -49,7 +49,7 @@ function BetsWheel(prop) {
   var url =
     window.location != window.parent.location
       ? window.parent.location
-      : window.parent.location;
+      : "https://www.khodekhalse.com/";
   return (
     <>
       <div className="info">

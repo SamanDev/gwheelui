@@ -15,7 +15,7 @@ import {
 var url =
   window.location != window.parent.location
     ? window.parent.location
-    : window.parent.location;
+    : "https://www.khodekhalse.com/";
 const getDelts = (item, betx, tit, num) => {
   var outb = "black";
   if (betx == -1) {
