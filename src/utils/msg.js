@@ -20,6 +20,8 @@ var url =
   window.location.toString().indexOf(":") == -1
     ? window.parent.location
     : "https://www.khodekhalse.com/";
+console.log(window.location.toString());
+console.log(window.parent);
 const CommentExampleMetadata = (prop) => {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);

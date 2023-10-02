@@ -234,20 +234,6 @@ function BetsWheel(prop) {
 
   return (
     <>
-      <Popup
-        context={contextRef}
-        open={true}
-        position="top left"
-        inverted
-        className={
-          wheel?.status != "Pending"
-            ? "animate__fadeInDown animate__animated"
-            : "animate__animated animate__fadeOutUp"
-        }
-      >
-        ⛔ Wait for next round.
-      </Popup>
-
       <div
         style={
           wheel?.status == "Pending"
@@ -259,6 +245,19 @@ function BetsWheel(prop) {
               }
         }
       >
+        <Popup
+          context={contextRef}
+          open={true}
+          position="top left"
+          inverted
+          className={
+            wheel?.status != "Pending"
+              ? "animate__fadeInDown animate__animated"
+              : "animate__animated animate__fadeOutUp"
+          }
+        >
+          ⛔ Wait for next round.
+        </Popup>
         <div ref={contextRef}></div>
         {segX.map((seg, i) => {
           var inf = getPosCount(list, seg);
