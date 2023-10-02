@@ -37,7 +37,7 @@ const BoardUser = () => {
         <br />
         <Button
           onClick={() => {
-            //window.location.reload();
+            window.location.reload();
           }}
           color="orange"
         >

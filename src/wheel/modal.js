@@ -14,7 +14,7 @@ import {
 } from "../utils/include";
 var url =
   window.location != window.parent.location
-    ? document.referrer
+    ? window.parent.location
     : window.parent.location;
 const getDelts = (item, betx, tit, num) => {
   var outb = "black";

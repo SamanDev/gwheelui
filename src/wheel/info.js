@@ -48,7 +48,7 @@ function BetsWheel(prop) {
   }
   var url =
     window.location != window.parent.location
-      ? document.referrer
+      ? window.parent.location
       : window.parent.location;
   return (
     <>
