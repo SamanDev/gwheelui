@@ -101,8 +101,7 @@ const TableExampleSingleLine = (prop) => {
     };
   }, []);
   var url =
-    window.location != document.referrer &&
-    window.location.toString().indexOf(":") == -1
+    window.location != document.referrer
       ? document.referrer
       : "https://www.khodekhalse.com/";
   return (
