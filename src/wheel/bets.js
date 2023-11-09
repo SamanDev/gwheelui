@@ -201,7 +201,7 @@ function BetsWheel(prop) {
     let _b = bet ? bet : bet;
     if (wheel?.status == "Pending" && con) {
       var t1 = new Date(wheel?.date);
-      var t2 = new Date();
+      var t2 = new Date(localStorage.getItem("mytime"));
       var dif = t2.getTime() - t1.getTime();
 
       var Seconds_from_T1_to_T2 = dif / 1000;
@@ -244,6 +244,7 @@ function BetsWheel(prop) {
                 transition: "all 0.5s ease-in",
               }
         }
+        ref={contextRef}
       >
         <Popup
           context={contextRef}
@@ -258,7 +259,7 @@ function BetsWheel(prop) {
         >
           ⛔ Wait for next round.
         </Popup>
-        <div ref={contextRef}></div>
+        <div></div>
         {segX.map((seg, i) => {
           var inf = getPosCount(list, seg);
           return (

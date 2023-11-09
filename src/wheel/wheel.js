@@ -6,6 +6,7 @@ import CountWheel from "./count";
 import Modalwin from "./modal";
 import EventBus from "../common/EventBus";
 import { segments, getcolor, getcolortext } from "../utils/include";
+
 var _l = [];
 
 segments.map((item, i) => {
@@ -21,6 +22,7 @@ var Seconds_Between_Dates = 0.1;
 function MNyWheel(prop) {
   const [wheel, setWheel] = useState();
   const [mustspin, setMustSpin] = useState(false);
+
   const [prizeNumber, setPrizeNumber] = useState(0);
   useEffect(() => {
     EventBus.on("wheel", (data) => {
@@ -44,7 +46,7 @@ function MNyWheel(prop) {
     if (wheel?.status) {
       if (wheel?.status == "Spin") {
         var t1 = new Date(wheel?.date);
-        var t2 = new Date();
+        var t2 = new Date(localStorage.getItem("mytime"));
         var dif = t2.getTime() - t1.getTime();
 
         var Seconds_from_T1_to_T2 = dif / 1000;

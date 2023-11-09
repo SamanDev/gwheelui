@@ -45,6 +45,9 @@ function onConnect() {
     if (command == "chat") {
       EventBus.dispatch("chat", data);
     }
+    if (command == "date") {
+      EventBus.dispatch("mytime", data);
+    }
 
     if (command == "disconnect") {
       socket.disconnect();

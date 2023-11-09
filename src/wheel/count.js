@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import { segments, getcolor } from "../utils/include";
 import EventBus from "../common/EventBus";
+import { useServerTime } from "../components/time";
 var timer;
 
 function checkbox() {
@@ -40,6 +41,7 @@ function CountWheel(prop) {
 
   const [openads, setOpenads] = useState(false);
   const [wheel, setWheel] = useState(prop.wheel);
+  const [servertime] = useServerTime();
 
   useEffect(() => {
     EventBus.on("wheel", (data) => {
@@ -81,27 +83,22 @@ function CountWheel(prop) {
       }, 800);
     }
   }, [wheel?.status]);
+  useEffect(() => {
+    mytime();
+  }, [servertime]);
 
   const mytime = () => {
     if (wheel?.status) {
       var t1 = new Date(wheel?.date);
-      var t2 = new Date();
+      var t2 = new Date(servertime);
+
       var dif = t2.getTime() - t1.getTime();
 
       var Seconds_from_T1_to_T2 = dif / 1000;
       var Seconds_Between_Dates = parseInt(Math.abs(Seconds_from_T1_to_T2));
       if (Seconds_Between_Dates >= 0 && Seconds_Between_Dates <= 16) {
         setTime(parseInt(Seconds_Between_Dates));
-        //console.log(Seconds_Between_Dates);
-
-        timer = setTimeout(() => {
-          mytime();
-        }, 1000);
       }
-    } else {
-      timer = setTimeout(() => {
-        mytime();
-      }, 1000);
     }
   };
   if (!wheel?.status) {
