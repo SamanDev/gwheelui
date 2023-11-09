@@ -259,7 +259,7 @@ function BetsWheel(prop) {
         >
           ⛔ Wait for next round.
         </Popup>
-        <div></div>
+
         {segX.map((seg, i) => {
           var inf = getPosCount(list, seg);
           return (
