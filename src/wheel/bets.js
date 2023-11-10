@@ -248,7 +248,7 @@ function BetsWheel(prop) {
       >
         <Popup
           context={contextRef}
-          open={true}
+          open={wheel?.status != "Pending" ? true : false}
           position="top left"
           inverted
           className={

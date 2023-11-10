@@ -20,7 +20,7 @@ const BoardUser = () => {
       setUserDC(true);
     });
     EventBus.on("connect", (data) => {
-      //setUserDC(false);
+      setUserDC(false);
     });
 
     return () => {
@@ -37,7 +37,7 @@ const BoardUser = () => {
         <br />
         <Button
           onClick={() => {
-            window.location.reload();
+            socket.connect();
           }}
           color="orange"
         >

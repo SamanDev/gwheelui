@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
@@ -7,70 +7,19 @@ import "./assets/App.css";
 import "animate.css";
 
 import BoardUser from "./components/BoardUser";
-import $ from "jquery";
-import { logout } from "./actions/auth";
-import { clearMessage } from "./actions/message";
 
 import EventBus from "./common/EventBus";
-const AppOrtion = (agel) => {
-  var scale = window.outerWidth / 1100;
-  if (agel == 90 && scale < 1) {
-    //window.parent.postMessage("AppOrtion", "*");
-    document
-      .querySelector('meta[name="viewport"]')
-      .setAttribute(
-        "content",
-        "width=device-width, initial-scale=" +
-          scale +
-          ",maximum-scale=" +
-          scale +
-          ""
-      );
-  } else {
-    document
-      .querySelector('meta[name="viewport"]')
-      .setAttribute(
-        "content",
-        "width=device-width,initial-scale=1,maximum-scale=1"
-      );
-  }
-};
+
 const App = () => {
   localStorage.removeItem("user");
-  const { user: currentUser } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-
-  let location = useLocation();
-
-  useEffect(() => {
-    setTimeout(() => {
-      window.parent.postMessage("AppOrtion", "*");
-    }, 400);
-    window.addEventListener("orientationchange", (event) => {
-      setTimeout(() => {
-        window.parent.postMessage("AppOrtion", "*");
-      }, 400);
-    });
-  }, []);
-  useEffect(() => {
-    if (["/login", "/register"].includes(location.pathname)) {
-      dispatch(clearMessage()); // clear message when changing location
+  localStorage.removeItem("mytime");
+  function inIframe() {
+    try {
+      return window.self == window.top;
+    } catch (e) {
+      return false;
     }
-  }, [dispatch, location]);
-
-  const logOut = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
-
-  useEffect(() => {
-    EventBus.on("logout", () => {
-      logOut();
-    });
-
-    return () => {
-      EventBus.remove("logout");
-    };
-  }, [currentUser, logOut]);
+  }
   useEffect(() => {
     window.parent.postMessage("userget", "*");
     EventBus.on("setuser", (data) => {
@@ -81,7 +30,9 @@ const App = () => {
       EventBus.remove("setuser");
     };
   }, []);
-
+  if (window.self == window.top) {
+    window.location.href = "https://www.google.com/";
+  }
   return (
     <Routes>
       <Route path="*" element={<BoardUser />} />

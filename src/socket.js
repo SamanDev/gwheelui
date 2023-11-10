@@ -19,6 +19,7 @@ export const socket = io(URL, {
 function onConnect() {
   EventBus.dispatch("connect", true);
   socket.on("msg", ({ command, data }) => {
+    console.log(command, data);
     if (command == "update") {
       localStorage.setItem("wheel", JSON.stringify(data));
       EventBus.dispatch("wheel", data);
@@ -57,6 +58,6 @@ function onConnect() {
 function onDisConnect() {
   EventBus.dispatch("disconnect");
 }
-socket.on("connect", onConnect);
+socket.once("connect", onConnect);
 socket.on("disconnect", onDisConnect);
 export default socket;
