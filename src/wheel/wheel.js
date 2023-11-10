@@ -52,7 +52,7 @@ function MNyWheel(prop) {
         var Seconds_from_T1_to_T2 = dif / 1000;
         Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
 
-        Seconds_Between_Dates = 40 - Seconds_Between_Dates;
+        Seconds_Between_Dates = 35 - Seconds_Between_Dates;
 
         Seconds_Between_Dates = Seconds_Between_Dates / 10;
         Seconds_Between_Dates = parseFloat(Seconds_Between_Dates).toFixed(2);
