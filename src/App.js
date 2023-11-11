@@ -13,13 +13,7 @@ import EventBus from "./common/EventBus";
 const App = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("mytime");
-  function inIframe() {
-    try {
-      return window.self == window.top;
-    } catch (e) {
-      return false;
-    }
-  }
+
   useEffect(() => {
     window.parent.postMessage("userget", "*");
     EventBus.on("setuser", (data) => {
