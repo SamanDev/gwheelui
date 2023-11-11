@@ -7,7 +7,7 @@ import "./assets/App.css";
 import "animate.css";
 
 import BoardUser from "./components/BoardUser";
-
+import $ from "jquery";
 import EventBus from "./common/EventBus";
 
 const App = () => {
@@ -20,6 +20,13 @@ const App = () => {
       localStorage.setItem("user", JSON.stringify(data));
       EventBus.dispatch("user", data);
     });
+    window.addEventListener(
+      "focus",
+      () => {
+        $("#reconn").trigger("click");
+      },
+      { once: true }
+    );
     return () => {
       EventBus.remove("setuser");
     };

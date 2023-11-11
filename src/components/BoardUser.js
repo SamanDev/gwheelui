@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Mywhell from "../MyWheel";
 
-import { Dimmer, Icon, Header, Button } from "semantic-ui-react";
+import { Dimmer, Icon, Header, Button, Modal } from "semantic-ui-react";
 import EventBus from "../common/EventBus";
 import socket from "../socket";
 const BoardUser = () => {
@@ -11,7 +11,7 @@ const BoardUser = () => {
     socket.connect();
 
     return () => {
-      //setUserDC(true);
+      setUserDC(true);
       socket.disconnect();
     };
   }, []);
@@ -27,27 +27,33 @@ const BoardUser = () => {
       EventBus.remove("disconnect");
     };
   }, []);
-  if (userDC) {
-    return (
-      <Dimmer active className="loadarea" style={{ paddingTop: "10%" }}>
-        <Header as="h2" icon inverted>
+
+  return (
+    <div className="home wheel">
+      <Modal
+        basic
+        open={userDC ? true : false}
+        size="small"
+        trigger={<Button>Basic Modal</Button>}
+      >
+        <Header icon style={{ marginTop: 80 }}>
           <Icon name="ban" color="red" />
           Connection lost!
         </Header>
-        <br />
-        <Button
-          onClick={() => {
-            socket.connect();
-          }}
-          color="orange"
-        >
-          Reconnect
-        </Button>
-      </Dimmer>
-    );
-  }
-  return (
-    <div className="home wheel">
+
+        <Modal.Actions style={{ textAlign: "center" }}>
+          <Button
+            basic
+            id="reconn"
+            onClick={() => {
+              socket.connect();
+            }}
+            color="orange"
+          >
+            Reconnect
+          </Button>
+        </Modal.Actions>
+      </Modal>
       <Mywhell />
     </div>
   );
