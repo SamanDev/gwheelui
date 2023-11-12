@@ -30,12 +30,7 @@ const BoardUser = () => {
 
   return (
     <div className="home wheel">
-      <Modal
-        basic
-        open={userDC ? true : false}
-        size="small"
-        trigger={<Button>Basic Modal</Button>}
-      >
+      <Modal basic open={userDC ? true : false} size="small" trigger={<></>}>
         <Header icon style={{ marginTop: 80 }}>
           <Icon name="ban" color="red" />
           Connection lost!
