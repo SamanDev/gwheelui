@@ -30,7 +30,7 @@ const App = () => {
     };
   }, []);
   if (window.self == window.top) {
-   // window.location.href = "https://www.google.com/";
+   window.location.href = "https://www.google.com/";
   }
   return (
     <Routes>
