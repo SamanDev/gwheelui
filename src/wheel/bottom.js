@@ -8,7 +8,7 @@ import CountWheel from "./count";
 
 const GridExampleDividedPhrase = (prop) => {
   const [bet, setBet] = useState(
-    localStorage.getItem("setbet") ? localStorage.getItem("setbet") : 5
+    localStorage.getItem("setbet") ? localStorage.getItem("setbet") : 50000
   );
   const [wheel, setWheel] = useState(JSON.parse(localStorage.getItem("wheel")));
   
@@ -19,11 +19,6 @@ const GridExampleDividedPhrase = (prop) => {
       }
     });
   
-    return () => {
-      setWheel();
-     
-      EventBus.remove("wheel");
-    };
   }, []);
 
   useEffect(() => {
@@ -32,7 +27,7 @@ const GridExampleDividedPhrase = (prop) => {
   return (
     <>
      
-      <Grid columns="three" className={wheel.status}>
+      <Grid columns="three" className={wheel?.status}>
         <Grid.Row style={{ margin: 0 }}>
           <Grid.Column>
             <BetsWheel bet={bet} setBet={setBet} />
