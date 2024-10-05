@@ -55,7 +55,7 @@ function ModalExampleModal(prop) {
 
       if (wheelb?.status != "Pending") {
         var newuser = olduser2;
-        newuser.balance2 = data;
+        newuser.balance = data;
         setUser(newuser);
       }
     });
@@ -96,9 +96,9 @@ function ModalExampleModal(prop) {
         for free, if your balance is less than 1,000.
         <Divider />
         <div
-          style={user?.balance2 >= 1000 ? { color: "red" } : { color: "green" }}
+          style={user?.balance >= 1000 ? { color: "red" } : { color: "green" }}
         >
-          Your balance is {formatDollar(user?.balance2)}{" "}
+          Your balance is {formatDollar(user?.balance)}{" "}
           <span style={{ position: "relative", top: -1 }}>
             <Jetton />
           </span>
@@ -106,7 +106,7 @@ function ModalExampleModal(prop) {
         </div>
         <Button
           color="facebook"
-          disabled={user?.balance2 >= 1000}
+          disabled={user?.balance >= 1000}
           onClick={() => {
             setOpenads(true);
           }}

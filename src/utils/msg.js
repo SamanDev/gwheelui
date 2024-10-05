@@ -18,7 +18,7 @@ var item = {
 var url =
   window.location != document.referrer
     ? document.referrer
-    : "https://www.khodekhalse.com/";
+    : "https://www.wheelofpersia.com/";
 
 const CommentExampleMetadata = (prop) => {
   const oldduser = JSON.parse(localStorage.getItem("user"));

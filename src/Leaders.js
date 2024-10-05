@@ -46,7 +46,7 @@ const TableExampleSingleLine = (prop) => {
             <div
               style={{ float: "right", lineHeight: "25px", display: "flex" }}
             >
-              {formatDollar(item?.balance2)}{" "}
+              {formatDollar(item?.balance)}{" "}
               <img src={"/assets/chip.svg"} style={{ width: 25, height: 25 }} />
             </div>
           </List.Item>

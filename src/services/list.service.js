@@ -3,9 +3,12 @@ import authHeader from "./auth-header";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://wserverget.khodekhalse.com/lastlist"
-    : "https://wserverget.khodekhalse.com/lastlist";
-
+    ? "https://wserverget.wheelofpersia.com/lastlist"
+    : "https://wserverget.wheelofpersia.com/lastlist";
+    const API_URL3 =
+    process.env.NODE_ENV === "production"
+      ? "http://localhost:2525/lastlist"
+      : "http://localhost:2525/lastlist";
 const getPublicContent = (data) => {
   return axios.get(API_URL + "?l=" + data.command);
 };

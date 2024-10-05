@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/App.css";
 import "animate.css";
 
 import BoardUser from "./components/BoardUser";
-import $ from "jquery";
 import EventBus from "./common/EventBus";
 
 const App = () => {
@@ -23,7 +21,7 @@ const App = () => {
     window.addEventListener(
       "focus",
       () => {
-        $("#reconn").trigger("click");
+        //$("#reconn").trigger("click");
       },
       { once: true }
     );
@@ -32,7 +30,7 @@ const App = () => {
     };
   }, []);
   if (window.self == window.top) {
-    window.location.href = "https://www.google.com/";
+   // window.location.href = "https://www.google.com/";
   }
   return (
     <Routes>

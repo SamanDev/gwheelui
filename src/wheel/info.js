@@ -6,19 +6,19 @@ function BetsWheel(prop) {
   const oldduser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(oldduser);
   const [online, setOnline] = useState(1);
-  const [balance, setBalance] = useState(user?.balance2);
+  const [balance, setBalance] = useState(user?.balance);
   useEffect(() => {
     window.addEventListener("message", function (event) {
       if (event?.data?.username) {
         localStorage.setItem("user", JSON.stringify(event?.data));
 
         EventBus.dispatch("user", event.data);
-        EventBus.dispatch("balance", event.data.balance2);
+        EventBus.dispatch("balance", event.data.balance);
       }
     });
     EventBus.on("user", (data) => {
       setUser(data);
-      setBalance(data.balance2);
+      setBalance(data.balance);
     });
     EventBus.on("balance", (data) => {
       setBalance(data);
@@ -36,7 +36,7 @@ function BetsWheel(prop) {
   useEffect(() => {
     var newuser = JSON.parse(localStorage.getItem("user"));
     try {
-      newuser.balance2 = balance;
+      newuser.balance = balance;
       localStorage.setItem("user", JSON.stringify(newuser));
     } catch (error) {}
   }, [balance]);
@@ -49,7 +49,7 @@ function BetsWheel(prop) {
   var url =
     window.location != document.referrer
       ? document.referrer
-      : "https://www.khodekhalse.com/";
+      : "https://www.galaxypoker.vip/";
   return (
     <>
       <div className="info">
@@ -70,7 +70,7 @@ function BetsWheel(prop) {
             <Label color="black">
               <Jetton />
               {balance == -1
-                ? formatDollar(user?.balance2)
+                ? formatDollar(user?.balance)
                 : formatDollar(balance)}
             </Label>
           </span>

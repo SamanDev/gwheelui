@@ -96,7 +96,7 @@ function BetsWheel(prop) {
   const [wheel, setWheel] = useState(prop.wheel);
   const [user, setUser] = useState(prop.user);
   const [userbets, setuserbets] = useState(prop.wheel?.wheelusers);
-  const [balance, setBalance] = useState(user?.balance2);
+  const [balance, setBalance] = useState(user?.balance);
 
   const [list, setList] = useState([]);
   useEffect(() => {

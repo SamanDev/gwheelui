@@ -103,7 +103,7 @@ const TableExampleSingleLine = (prop) => {
   var url =
     window.location != document.referrer
       ? document.referrer
-      : "https://www.khodekhalse.com/";
+      : "https://www.wheelofpersia.com/";
   return (
     <>
       <Table

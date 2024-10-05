@@ -79,7 +79,7 @@ function ModalExampleModal(prop) {
 
       if (wheelb?.status != "Pending") {
         var newuser = olduser2;
-        newuser.balance2 = data;
+        newuser.balance = data;
         setUser(newuser);
       }
     });
@@ -122,10 +122,10 @@ function ModalExampleModal(prop) {
             <br /> <br />
             <div
               style={
-                user?.balance2 >= 5000 ? { color: "red" } : { color: "green" }
+                user?.balance >= 5000 ? { color: "red" } : { color: "green" }
               }
             >
-              Your balance is {formatDollar(user?.balance2)}
+              Your balance is {formatDollar(user?.balance)}
               <span style={{ position: "relative", top: -1 }}>
                 <Jetton />
               </span>
@@ -138,7 +138,7 @@ function ModalExampleModal(prop) {
                 setLoading(true);
               }}
               loading={loading}
-              disabled={loading || user?.balance2 >= 5000}
+              disabled={loading || user?.balance >= 5000}
             >
               <Icon name="free code camp" />
               Use Token

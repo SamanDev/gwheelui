@@ -6,6 +6,10 @@ const URL =
   process.env.NODE_ENV === "production"
     ? "https://server.wheelofpersia.com/wheel"
     : "https://server.wheelofpersia.com/wheel";
+    const URL2 =
+    process.env.NODE_ENV === "production"
+      ? "http://localhost:2424/wheel"
+      : "http://localhost:2424/wheel";
 const url = window.location.href.toString().split("/");
 
 export const socket = io(URL, {
@@ -15,6 +19,7 @@ export const socket = io(URL, {
   },
   autoConnect: false,
 });
+
 
 function onConnect() {
   EventBus.dispatch("connect", true);

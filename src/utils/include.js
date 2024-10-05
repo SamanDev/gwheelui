@@ -38,7 +38,7 @@ export const getcolortext = (item) => {
 export function Jetton(prop) {
   return (
     <>
-      <Icon name="dollar" color="teal" />
+      <Icon name="bandcamp" color="teal" />
     </>
   );
 }
@@ -165,7 +165,7 @@ export function formatDollar(num) {
           .reverse()
           .reduce(function (acc, num, i, orig) {
             return num + (num != "-" && i && !(i % 3) ? "," : "") + acc;
-          }, ".00")
+          }, "")
       );
     } else {
       return (

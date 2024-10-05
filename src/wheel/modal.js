@@ -15,7 +15,7 @@ import {
 var url =
   window.location != document.referrer
     ? document.referrer
-    : "https://www.khodekhalse.com/";
+    : "https://www.wheelofpersia.com/";
 const getDelts = (item, betx, tit, num) => {
   var outb = "black";
   if (betx == -1) {

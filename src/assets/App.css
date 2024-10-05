@@ -280,17 +280,54 @@ tr .ui,
 }
 
 .mywhell {
-  transform-origin: top center;
+  
   margin: auto;
   right: 0;
   left: 0;
-  transform: translateY(30px);
+  top: 0;
+  transform-origin: bottom left !important;
   position: relative;
   height: 80vw;
   max-height: 445px;
+  transition: transform .4s ease;
 }
-
+.mywhell.true ,.mywhell.fal3se {
+  transform-origin: bottom left ;
+  transform: scale(1.5);
+ 
+  
+ 
+}
+.three.column.grid  {
+  
+  transform: scale(1);
+  transition: all 0.4s ease;
+  transform-origin: center  !important;
+  opacity: 1;
+ 
+}
+.three.column.grid.Pending,.three.column.grid.Done  {
+  
+  
+ margin: 10% 15%;
+    background: rgba(0, 0, 0, .8);
+ position: fixed;
+ 
+ transform: scale(1.3);
+ opacity: 1;
+ top: 0;
+ right: 0;
+ left: 0;
+}
+.three.column.grid.Spin  {
+  opacity: 0;
+ 
+}
+.three.column.grid:not(.Pending) .bet  {
+display: none; 
+}
 .count {
+
   position: absolute;
   margin: auto;
   right: 0;
@@ -488,7 +525,7 @@ tr .ui,
 .betbtnarea {
   width: 80px;
   transform-origin: top left !important;
-  transform: scale(0.8);
+ 
   position: absolute;
   z-index: 10;
   top: 310px;
@@ -771,7 +808,7 @@ canvas {
     );
 }
 .pokerchip.white:after {
-  content: "1";
+  content: "50K";
   background: #89817f;
   color: #fff;
 }
@@ -862,7 +899,7 @@ canvas {
     );
 }
 .pokerchip.red:after {
-  content: "5";
+  content: "250K";
   background: #fe7f9c;
   color: #ffffff;
 }
@@ -953,7 +990,7 @@ canvas {
     );
 }
 .pokerchip.blue:after {
-  content: "25";
+  content: "500K";
   background: #0492c2;
   color: #ffffff;
 }
@@ -1044,7 +1081,7 @@ canvas {
     );
 }
 .pokerchip.green:after {
-  content: "500";
+  content: "500K";
   background: #04bd49;
   color: #ffffff;
 }
@@ -1135,8 +1172,8 @@ canvas {
     );
 }
 .pokerchip.black:after {
-  content: "100";
-  background: #ffef00;
+  content: "1M";
+  background: #181714;
   color: #515151;
 }
 .pokerchip.bnfsh {
@@ -1226,7 +1263,7 @@ canvas {
     );
 }
 .pokerchip.bnfsh:after {
-  content: "1K";
+  content: "1M";
   background: #710080;
   color: #ffffff;
 }
@@ -1317,7 +1354,7 @@ canvas {
     );
 }
 .pokerchip.golds:after {
-  content: "5K";
+  content: "5M";
   background: #d2b10a;
   color: #ffffff;
 }

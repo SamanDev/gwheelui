@@ -1,24 +1,19 @@
 import React from "react";
 const getColor = (num) => {
-  if (num == "1") {
+  if (num == "50000") {
     return "white";
   }
-  if (num == "5") {
+  if (num == "250000") {
     return "red";
   }
-  if (num == "25") {
+  if (num == "500000") {
     return "blue";
   }
-  if (num == "100") {
-    return "black";
-  }
-  if (num == "500") {
-    return "green";
-  }
-  if (num == "1000") {
+  if (num == "1000000") {
     return "bnfsh";
   }
-  if (num == "5000") {
+  
+  if (num == "5000000") {
     return "golds";
   }
 };
