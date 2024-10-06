@@ -212,11 +212,11 @@ function BetsWheel(prop) {
           });
         }
       } else {
-        window.parent.postMessage("openusdbank", "*");
+        window.parent.postMessage("opendeposit", "*");
       }
     } else {
       if (balance < _b) {
-        window.parent.postMessage("openusdbank", "*");
+        window.parent.postMessage("opendeposit", "*");
       }
     }
   };
@@ -228,7 +228,8 @@ function BetsWheel(prop) {
           wheel?.status == "Pending"
             ? { transition: "all 0.5s ease-in" }
             : {
-           
+                opacity: 0.7,
+                transform: "scale(.5)",
                 transition: "all 0.5s ease-in",
               }
         }
@@ -258,7 +259,6 @@ function BetsWheel(prop) {
               onClick={() => {
                 addBet(seg, prop.bet);
               }}
-              
               className={
                 wheel?.status == "Spining" && segments[wheel?.number] == seg
                   ? "animate__tada animate__animated animate__repeat-3 pen"
@@ -270,7 +270,7 @@ function BetsWheel(prop) {
                 background: getcolor(seg),
                 color: getcolortext(seg),
 
-                width: '100%',
+                width: 100,
                 marginBottom: 5,
                 cursor: "pointer",
               }}

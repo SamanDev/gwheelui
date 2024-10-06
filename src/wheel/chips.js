@@ -30,12 +30,7 @@ function BetsWheel(prop) {
     EventBus.on("balance", (data) => {
       setBalance(data);
     });
-    return () => {
-      setWheel();
-      EventBus.remove("user");
-      EventBus.remove("balance");
-      EventBus.remove("wheel");
-    };
+    
   }, []);
   useEffect(() => {
     var bet = prop.bet;

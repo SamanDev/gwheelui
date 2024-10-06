@@ -27,13 +27,13 @@ const GridExampleDividedPhrase = (prop) => {
   return (
     <>
      
-      <Grid columns="three" className={wheel?.status}>
+      <Grid columns="three" className={wheel?.status+"1"}>
         <Grid.Row style={{ margin: 0 }}>
           <Grid.Column>
             <BetsWheel bet={bet} setBet={setBet} />
           </Grid.Column>
           <Grid.Column>
-          <CountWheel wheel={wheel} />
+          
             <ChatWheel />
           </Grid.Column>
           <Grid.Column className="bet">

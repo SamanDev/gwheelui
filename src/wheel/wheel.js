@@ -82,7 +82,7 @@ function MNyWheel(prop) {
 
   return (
     <>
-      <div className={"mainwheel mywhell "+ mustspin}>
+      <div className={"mainwheel mywhell 2"+ mustspin}>
         <CountWheel wheel={wheel} />
         <div className="countover">
           <img src="/assets/cadr3.png" id="cadr" />

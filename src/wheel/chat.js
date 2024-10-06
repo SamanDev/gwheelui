@@ -39,9 +39,9 @@ function ChatWheel(prop) {
         wheel?.status != "Pending"
           ? { transition: "all 0.5s ease-in", transformOrigin: "top center" }
           : {
-          
+              opacity: 0.7,
               transformOrigin: "top center",
-              
+              transform: "scale(.5)",
               transition: "all 0.5s ease-in",
             }
       }
